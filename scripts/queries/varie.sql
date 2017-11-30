@@ -1,17 +1,18 @@
 SELECT 
 	i.Stylecolor
-	q.Location
-	qTypology
-	q.EventYear
-	Sum(q.[Allocation Qty]) AS [Allocation Qty]
-FROM [I_Allocation_Qty] q 
-JOIN [I_Tree Item] i
-ON q.sku = q.Item
+	,q.Location
+	,q.Typology
+	,q.EventYear
+    ,SUM(q.Allocation_Qty) AS Allocation_Qty
+FROM M_Allocation_Qty q 
+JOIN I_Item i
+ON q.Item = q.Item
 GROUP BY 
 	i.Stylecolor
-	q.Location
-	q.Typology
-	q.EventYear;
+	,q.Location
+	,q.Typology
+	,q.EventYear;
+
 
 
 
