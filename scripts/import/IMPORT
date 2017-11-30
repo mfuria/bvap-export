@@ -1,0 +1,12 @@
+-- \cd 'C:/Users/mfuria/Documents/MATTEO FURIA/110 - Operativi/001 - Progetti/Bottega Veneta/00 - Data/00 - Export/Implementazione/Esempio Export da Davide/'
+
+
+\COPY I_Allocation_Local_Val FROM 'Allocation Local Val.txt'
+\COPY I_Allocation_Qty FROM 'Allocation Qty.txt'
+\COPY I_Allocation_Val FROM 'Allocation Val.txt'
+
+\COPY I_ITEM FROM 'Tree Item.txt'
+\COPY I_LOCATION FROM 'Tree Key_location.txt'
+
+
+
