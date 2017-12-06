@@ -6,7 +6,7 @@ select
 ,Location
 ,Typology
 ,EventYear
-,to_number(Allocation_Qty,'9') as Allocation_Qty
+,to_number(Allocation_Qty,'99999999') as Allocation_Qty
 from I_Allocation_Qty
 
 )

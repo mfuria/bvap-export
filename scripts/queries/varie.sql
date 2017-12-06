@@ -1,4 +1,4 @@
-select i.department, sum(to_number(q.allocation_qty,'9')), count(*) from i_allocation_qty q join i_item i on i.item = q.item group by 1
+select i.department, sum(to_number(q.allocation_qty,'99999999')), count(*) from i_allocation_qty q join i_item i on i.item = q.item group by 1
 select DEPT4F, sum(to_number(substring(qonc4f, 1,6),'999999')), sum(to_number(expr1,'99999')) from s_output o group by 1
 
 delete from i_item
