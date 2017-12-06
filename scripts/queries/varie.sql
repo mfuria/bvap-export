@@ -1,3 +1,71 @@
+select i.department, sum(to_number(q.allocation_qty,'9')), count(*) from i_allocation_qty q join i_item i on i.item = q.item group by 1
+select DEPT4F, sum(to_number(substring(qonc4f, 1,6),'999999')), sum(to_number(expr1,'99999')) from s_output o group by 1
+
+delete from i_item
+delete from i_location
+delete from i_allocation_qty
+
+
+select * from crosstab(
+
+'select 
+i.stylecolor,
+q.location,
+q.typology,
+q.eventyear,
+i.progr_size,
+coalesce(sum(to_number(allocation_qty,''9'')),0) as allocation_qty
+from i_allocation_qty q
+join i_item i on i.item = q.item
+where progr_size in (''01'',''10'')
+group by 1, 2, 3, 4, 5
+order by 1, 2, 3, 4, 5
+',
+'select distinct progr_size from i_item order by 1'
+--$$VALUES ('01'::text), ('10')$$
+) as ct(
+	stylecolor varchar(100), 
+	location varchar(100), 
+	typology varchar(100), 
+	eventyear varchar(100), 
+	"01" numeric,
+	"02" numeric,
+	"03" numeric,
+	"04" numeric,
+	"05" numeric,
+	"06" numeric,
+	"07" numeric,
+	"08" numeric,
+	"09" numeric,
+	"10" numeric,
+	"11" numeric,
+	"12" numeric,
+	"13" numeric,
+	"14" numeric,
+	"15" numeric,
+	"16" numeric,
+	"17" numeric,
+	"18" numeric,
+	"19" numeric,
+	"23" numeric,
+	"28" numeric
+)
+
+
+
+
+
+select * from crosstab('
+
+select stylecolor,
+sum(to_number(allocation_qty,'9')) as allocation_qty
+from i_allocation_qty q
+join i_item i on i.item = q.item
+
+'
+)
+
+
 SELECT 
 	i.Stylecolor
 	,q.Location
