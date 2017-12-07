@@ -1,13 +1,13 @@
 CREATE VIEW S_CABLATI AS SELECT 
 	repeat(' ',2) AS TIPO4F,
-	ltrim(to_char(extract(century from current_date),'00')) as STSO4F,
-	right(ltrim(to_char(extract(year from current_date),'0000')),2) as STOA4F,
-	'3' AS STOS4F,
+	left(ltrim(to_char(extract(year from current_date),'0000')),2) as STSO4F,
+	i.ANNO_STAGIONE as STOA4F,
+	i.STAGIONE AS STOS4F,
 	'08' AS LIVE4F,
 	'50' AS TIVE4F,
 	'50' AS STVE4F,
 	'77' AS EVEN4F,
-	"CODICE_INVIO" AS RIES4F,
+	i."CODICE_INVIO" AS RIES4F,
 	'00000' AS NRIE4F,
 	ltrim(to_char(extract(day from current_date),'00')) as REGG4F,
 	ltrim(to_char(extract(month from current_date),'00')) as REMM4F,
@@ -38,4 +38,4 @@ CREATE VIEW S_CABLATI AS SELECT
 	repeat(' ',50) AS COMM4F,
 	repeat(' ',20) AS PONU4F,
 	repeat(' ',10) AS FLV04F_etc
-FROM "S_CODICE_INVIO";
+FROM "S_CODICE_INVIO" i;

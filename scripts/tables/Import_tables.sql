@@ -177,6 +177,10 @@ create table I_LOCATION (
 	,Zone_Desc                   VARCHAR(100)
 );
 
+alter table I_LOCATION add dest_code VARCHAR(100);
+alter table I_LOCATION add dest_code_desc VARCHAR(100);
+
+
 create table DestCode (
 	 Location            VARCHAR(50)
 	,Location_Desc       VARCHAR(50)

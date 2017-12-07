@@ -4,8 +4,8 @@ SELECT
 	q.Location,
 	q.Stylecolor,
 	right(q.eventyear,2) as EVEN4F,
-	d.CLIENT_ID AS CLID4F,
-	rpad(d.dest_code,2,'0') AS DEST4F,
+	l.CLIENT AS CLID4F,
+	case l.dest_code when '_' then '00' else rpad(l.dest_code,2,'0') end AS DEST4F,
 	s.Department AS DEPT4F,
 	s.Style AS MDPR4F,
 	s.Material AS CPAR4F,
@@ -68,6 +68,7 @@ SELECT
 	
 FROM style_color s
 INNER JOIN S_QTY_PIVOTTATA_SU_SIZE q ON q.Stylecolor = s.Stylecolor 
-INNER JOIN DestCode d ON d.Location = q.Location
+INNER JOIN mini_location l ON l.Location = q.Location
+
 
 ORDER BY q.Location, q.Stylecolor;
