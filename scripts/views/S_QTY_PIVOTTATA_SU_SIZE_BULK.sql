@@ -1,4 +1,4 @@
-create view S_QTY_PIVOTTATA_SU_SIZE as 
+create view S_QTY_PIVOTTATA_SU_SIZE_BULK as 
 with q as (
 
 select 
@@ -7,7 +7,7 @@ select
 ,Typology
 ,EventYear
 ,to_number(Allocation_Qty,'99999999') as Allocation_Qty
-from I_Allocation_Qty
+from I_Allocation_Qty_BULK
 
 )
 SELECT 

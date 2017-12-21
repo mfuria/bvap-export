@@ -1,0 +1,8 @@
+CREATE TABLE i_allocation_qty_bulk (
+	item VARCHAR(100) NULL DEFAULT NULL,
+	location VARCHAR(50) NULL DEFAULT NULL,
+	typology VARCHAR(50) NULL DEFAULT NULL,
+	eventyear VARCHAR(50) NULL DEFAULT NULL,
+	allocation_qty VARCHAR(50) NULL DEFAULT NULL
+)
+;

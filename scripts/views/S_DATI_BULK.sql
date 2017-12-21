@@ -1,4 +1,4 @@
-create view S_DATI as
+create view S_DATI_BULK as
 
 SELECT 
 	q.Location,
@@ -67,8 +67,8 @@ SELECT
 	repeat(' ',6) AS DOOR4F
 	
 FROM style_color s
-INNER JOIN S_QTY_PIVOTTATA_SU_SIZE q ON q.Stylecolor = s.Stylecolor and q.department = s.department 
-INNER JOIN mini_location l ON l.Location = q.Location
+INNER JOIN S_QTY_PIVOTTATA_SU_SIZE_BULK q ON q.Stylecolor = s.Stylecolor and q.department = s.department 
+INNER JOIN mini_location_bulk l ON l.Location = q.Location
 
 
 ORDER BY q.Location, q.Stylecolor;

@@ -1,5 +1,41 @@
+update i_allocation_qty_bulk as b set eventyear = null, typology = null 
+
+
+with nb as (
+select distinct i.item, i.department, typology, eventyear 
+from i_item as i 
+left join i_allocation_qty as q
+on i.item = q.item
+)
+-- select * 
+update i_allocation_qty_bulk as b set eventyear = nb.eventyear, typology = nb.typology from nb 
+-- from i_allocation_qty_bulk as b, nb
+where nb.item = b.item
+
+
+
+with nb as (
+select distinct i.item, i.department, typology, eventyear 
+from i_item as i 
+left join i_allocation_qty as q
+on i.item = q.item
+),
+x as ( select distinct item, department from i_item )
+select x.department, b.* 
+-- update i_allocation_qty_bulk as b set eventyear = nb.eventyear, typology = nb.typology from nb 
+ from i_allocation_qty_bulk as b, nb, x
+where nb.item = b.item
+and b.item = x.item
+order by 1, 4 desc
+
+
+with x as ( select distinct style, department from style_color ) select o.* from S_OUTPUT_BULK o join x on x.style = o.MDPR4F where x.department = '100'
+
+
+
 select i.department, sum(to_number(q.allocation_qty,'99999999')), count(*) from i_allocation_qty q join i_item i on i.item = q.item group by 1
 select DEPT4F, sum(to_number(substring(qonc4f, 1,6),'999999')), sum(to_number(expr1,'99999')) from s_output o group by 1
+
 
 delete from i_item
 delete from i_location
